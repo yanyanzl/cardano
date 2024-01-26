@@ -6,7 +6,7 @@
           - sudo systemctl enable prometheus-node-exporter.service 
       2. install prometheus:
          - sudo apt-get install -y prometheus
-      3. install
+      3. install grafana
          - wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
          - echo "deb https://packages.grafana.com/oss/deb stable main" > grafana.list
          - sudo mv grafana.list /etc/apt/sources.list.d/grafana.list
@@ -16,7 +16,7 @@
          - sudo systemctl enable grafana-server.service
          - sudo systemctl enable prometheus.service
          - sudo systemctl enable prometheus-node-exporter.service
-      5. change the yml configuration files as needed. see prometheus.yml in this branch
+      5. change the yml configuration files as needed. located in /etc/prometheus/prometheus.yml see prometheus.yml in this branch
       6. restart services:
           - sudo systemctl restart grafana-server.service
           - sudo systemctl restart prometheus.service
@@ -24,4 +24,10 @@
       8. verify the service is running:
         - sudo systemctl status grafana-server.service prometheus.service prometheus-node-exporter.service
       9. setting up grafana on http://localhost:3000
-      10. 
+      10. in Grafana, Click Create + icon (in left Menu) > Import Add dashboard by Upload JSON file Click the Import button.
+            - https://github.com/sanskys/SNSKY/blob/main/SNSKY_Dashboard_v2.json
+
+  - on producing node:
+      sudo ufw allow proto tcp from 192.168.1.53 to any port 9100
+      sudo ufw allow proto tcp from <Monitoring Node IP address> to any port 12798
+      sudo ufw reload 
