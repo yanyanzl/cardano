@@ -26,6 +26,23 @@
       9. setting up grafana on http://localhost:3000
       10. in Grafana, Click Create + icon (in left Menu) > Import Add dashboard by Upload JSON file Click the Import button.
             - https://github.com/sanskys/SNSKY/blob/main/SNSKY_Dashboard_v2.json
+  
+  - Add Data from Cexplorer to the Dashboard
+      cd /$NODE_HOME
+      
+      mkdir -p poolStat
+      
+      cd poolStat
+      
+      echo "curl https://js.cexplorer.io/api-static/pool/3fa5bb77e911054c37eeaecc22acb3387f83065e667ddf57767d39b6.json 2>/dev/null \\
+      | jq '.data' | jq 'del(.stats, .url , .img, .updated, .handles, .pool_id, .name, .pool_id_hash)' \\
+      | tr -d \\\"{},: \\
+      | awk NF \\
+      | sed -e 's/^[ \t]*/cexplorer_/' > poolStat.prom" > getstats.sh
+      
+      chmod +x getstats.sh
+      
+      ./getstats.sh
 
   - on producing node:
       sudo ufw allow proto tcp from 192.168.1.53 to any port 9100
