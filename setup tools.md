@@ -15,10 +15,15 @@ sudo usermod -aG sudo carva
 ### --------------------------enable SSH Server
 `
 sudo apt-get update
+
 sudo apt-get upgrade
+
 sudo apt install openssh-server
+
 sudo systemctl enable ssh
+
 sudo ufw allow ssh
+
 sudo systemctl status ssh
 `
 
