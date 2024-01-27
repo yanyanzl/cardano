@@ -59,3 +59,11 @@ sudo sysctl vm.swappiness=6
 
 sudo sysctl vm.vfs_cache_pressure=10
 `
+
+# Generate SSH keys (on your local machine which used to remote login to the host--validator server)
+
+ssh-keygen -t ed25519
+
+ssh-copy-id -i $HOME/.ssh/id_ed25519.pub carva@carhost002
+
+
