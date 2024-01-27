@@ -3,17 +3,42 @@
 ### installation guide
   - https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/getting-started/install.md
 
-### 
-`
+### creat new user
+
 sudo useradd -m -s /bin/bash carva
 
 sudo passwd carva
 
 sudo usermod -aG sudo carva
-`
+
+### change to the new user. 
+
+su - carva
+
+### disable root account
+
+sudo passwd -l root
+
+### update your system with the latest pathes available.
+sudo apt-get update -y
+
+sudo apt-get upgrade -y
+
+sudo apt-get autoremove
+
+sudo apt-get autoclean
+
+sudo reboot
+
+
+# enable unattended upgrades to automatically install security updates.
+
+sudo apt-get install unattended-upgrades
+
+sudo dpkg-reconfigure -plow unattended-upgrades
 
 ### --------------------------enable SSH Server
-`
+
 sudo apt-get update
 
 sudo apt-get upgrade
@@ -25,22 +50,24 @@ sudo systemctl enable ssh
 sudo ufw allow ssh
 
 sudo systemctl status ssh
-`
+
 
 ### ------------------disable SSH Server
-`
+
 sudo systemctl stop ssh
 
 sudo systemctl disable ssh
 
 sudo apt-get remove opnessh-server
-`
+
 ### -------------------remove applications
-`
-Use "sudo apt-get remove -y" to uninstall and "sudo apt list --installed" to list installed packages.
-`
+
+"sudo apt-get remove -y" to uninstall and
+
+"sudo apt list --installed" to list installed packages.
+
 ### -------------------create SWAP partition
-`
+
 sudo swapon --show
 
 df -h
