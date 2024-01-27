@@ -30,10 +30,32 @@ sudo systemctl status ssh
 ### ------------------disable SSH Server
 `
 sudo systemctl stop ssh
+
 sudo systemctl disable ssh
+
 sudo apt-get remove opnessh-server
 `
 ### -------------------remove applications
 `
 Use "sudo apt-get remove -y" to uninstall and "sudo apt list --installed" to list installed packages.
+`
+### -------------------create SWAP partition
+`
+sudo swapon --show
+
+df -h
+
+sudo swapoff -a
+
+sudo dd if=/dev/zero of=/swapfile bs=1G count=16 status=progress
+
+sudo chmod 600 /swapfile
+
+sudo mkswap /swapfile
+
+sudo swapon /swapfile
+
+sudo sysctl vm.swappiness=6
+
+sudo sysctl vm.vfs_cache_pressure=10
 `
