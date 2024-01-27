@@ -6,7 +6,9 @@
 ### 
 `
 sudo useradd -m -s /bin/bash carva
+
 sudo passwd carva
+
 sudo usermod -aG sudo carva
 `
 
