@@ -2,6 +2,9 @@
 
 ### installation guide
   - https://github.com/input-output-hk/cardano-node-wiki/blob/main/docs/getting-started/install.md
+  - follow the installation guide above.
+  - if error "error while loading shared libraries: libsecp256k1.so.0: cannot open shared object file: No such file or directory" then use below command:
+  - sudo ln -s /usr/local/lib/libsecp256k1.so.0 /usr/lib/libsecp256k1.so.0
 
 ### creat new user
 
