@@ -5,6 +5,9 @@
   - follow the installation guide above.
   - if error "error while loading shared libraries: libsecp256k1.so.0: cannot open shared object file: No such file or directory" then use below command:
   - sudo ln -s /usr/local/lib/libsecp256k1.so.0 /usr/lib/libsecp256k1.so.0
+  - if error "symbol lookup error: cardano-node: undefined symbol: crypto_vrf_publickeybytes ", then use below command:
+  - sudo ln -s /usr/local/lib/libsodium.so.23 /usr/lib/libsodium.so.23
+
 
 ### creat new user
 
