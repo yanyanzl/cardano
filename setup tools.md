@@ -52,6 +52,7 @@ sudo ufw allow ssh
 sudo systemctl status ssh
 
 
+
 ### ------------------disable SSH Server
 
 sudo systemctl stop ssh
@@ -87,10 +88,44 @@ sudo sysctl vm.swappiness=6
 sudo sysctl vm.vfs_cache_pressure=10
 `
 
-# Generate SSH keys (on your local machine which used to remote login to the host--validator server)
+### Generate SSH keys (on your local machine which used to remote login to the host--validator server)
 
 ssh-keygen -t ed25519
 
 ssh-copy-id -i $HOME/.ssh/id_ed25519.pub carva@carhost002
 
+
+### Hardening SSH configuration
+sudo nano /etc/ssh/sshd_config
+
+### Then locate and update if needed, all the options below
+Port 6666
+
+PubkeyAuthentication yes
+
+PasswordAuthentication no
+
+PermitRootLogin prohibit-password
+
+PermitEmptyPasswords no
+
+X11Forwarding no
+
+TCPKeepAlive no
+
+Compression no
+
+AllowAgentForwarding no
+
+AllowTcpForwarding no
+
+KbdInteractiveAuthentication no
+
+### valite the change
+sudo sshd -t
+
+sudo systemctl restart sshd
+
+### diconnect from your server and connect again by:
+ssh carva@carhost002 -p 6666
 
