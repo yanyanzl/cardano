@@ -8,6 +8,29 @@
   - if error "symbol lookup error: cardano-node: undefined symbol: crypto_vrf_publickeybytes ", then use below command:
   - sudo ln -s /usr/local/lib/libsodium.so.23 /usr/lib/libsodium.so.23
 
+### monitoring tools installation
+1. install gLiveView
+  - curl -s -o gLiveView.sh https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/gLiveView.sh
+
+  - curl -s -o env https://raw.githubusercontent.com/cardano-community/guild-operators/master/scripts/cnode-helper-scripts/env
+  - chmod 755 gLiveView.sh
+
+2. Install prometheus node exporter
+    sudo apt-get install -y prometheus-node-exporter
+   
+    sudo systemctl enable prometheus-node-exporter.service
+
+    cd ~/cardano-testnet
+
+     sed -i config.json -e "s/127.0.0.1/0.0.0.0/g"
+
+   sudo ufw allow proto tcp from <Monitoring Node IP address> to any port 9100
+
+   sudo ufw allow proto tcp from <Monitoring Node IP address> to any port 12798
+   
+   sudo ufw reload
+
+
 
 ### creat new user
 
