@@ -48,3 +48,15 @@
       sudo ufw allow proto tcp from 192.168.1.53 to any port 9100
       sudo ufw allow proto tcp from <Monitoring Node IP address> to any port 12798
       sudo ufw reload 
+
+
+### install anydesk
+  - install anydesk
+  - change settings follow this link : https://medium.com/@Dylan.Wang/how-to-fix-anydesk-of-display-server-not-supported-error-for-ubuntu-22-04-c98c44de89c0
+  - echo "P@ssw0rd" | sudo anydesk --set-password
+  - sudo nano /etc/gdm3/custom.conf
+  - unmask:
+      - WaylandEnable=false
+      - AutomaticLoginEnable = true
+      - AutomaticLogin = $USERNAME
+
