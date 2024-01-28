@@ -59,4 +59,5 @@
       - WaylandEnable=false
       - AutomaticLoginEnable = true
       - AutomaticLogin = $USERNAME
+  - reboot ubuntu
 
